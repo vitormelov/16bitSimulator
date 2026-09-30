@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EF 16-bit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>EF <span class="accent">16-BIT</span></h1>
+    <nav class="sectors" id="sectorTabs" aria-label="Setor"></nav>
+    <div class="hud-total"><span id="hudPeople">0</span> PESSOAS AGORA</div>
+  </header>
+
+  <main class="layout">
+    <aside class="panel">
+      <section class="card">
+        <h2>LOJISTAS</h2>
+        <label class="field">
+          <span><i class="dot setor"></i>Nos boxes</span>
+          <input type="number" id="inLojistas" min="0" step="1">
+        </label>
+        <input type="range" id="rgLojistas" min="0" step="1">
+        <p class="hint" id="hintLojistas"></p>
+      </section>
+
+      <section class="card">
+        <h2>CLIENTES</h2>
+        <label class="field">
+          <span><i class="dot cliente"></i>Circulando</span>
+          <input type="number" id="inClientes" min="0" step="1">
+        </label>
+        <input type="range" id="rgClientes" min="0" step="10">
+        <p class="hint">Novos clientes chegam pelas escadas e pelo hall; quando o número cai, alguns vão embora.</p>
+      </section>
+
+      <section class="card stats">
+        <h2>RESUMO</h2>
+        <dl>
+          <dt>Boxes ocupados</dt><dd id="stOcc">–</dd>
+          <dt>Área de circulação</dt><dd id="stArea">–</dd>
+          <dt>Espaço por cliente</dt><dd id="stM2">–</dd>
+          <dt>Movimento</dt><dd id="stLos">–</dd>
+          <dt>Clientes / lojista</dt><dd id="stRatio">–</dd>
+        </dl>
+      </section>
+
+      <section class="card controls">
+        <button id="btnPlay" type="button" class="primary">ANDAR PELO SHOPPING</button>
+        <button id="btnPause" type="button">PAUSAR</button>
+        <button id="btnFast" type="button">VELOC. 1x</button>
+        <button id="btnFit" type="button">VER TUDO</button>
+      </section>
+
+      <p class="source" id="sourceInfo">Fonte dos dados: <b>manual</b></p>
+    </aside>
+
+    <section class="stage" id="stage">
+      <canvas id="view"></canvas>
+      <div class="tooltip" id="tip" hidden></div>
+      <div class="zoom">
+        <button id="btnZoomIn" type="button" aria-label="Aproximar">+</button>
+        <button id="btnZoomOut" type="button" aria-label="Afastar">−</button>
+      </div>
+
+      <div class="explore-hud" id="exploreHud" hidden>
+        <div class="near" id="nearInfo">Ande até um box para ver os detalhes</div>
+        <div class="keys" id="keysHint">WASD / SETAS andar · SHIFT correr · V 1ª pessoa · ESC sair</div>
+        <button type="button" id="btnView" class="view-btn">VISÃO 1ª PESSOA (V)</button>
+      </div>
+      <div class="dpad" id="dpad" hidden>
+        <button type="button" data-k="up" class="up" aria-label="Cima">▲</button>
+        <button type="button" data-k="left" class="left" aria-label="Esquerda">◀</button>
+        <button type="button" data-k="right" class="right" aria-label="Direita">▶</button>
+        <button type="button" data-k="down" class="down" aria-label="Baixo">▼</button>
+      </div>
+
+      <div class="legend">
+        <span><i class="sw box-aberto"></i>Box aberto</span>
+        <span><i class="sw box-vazio"></i>Box fechado</span>
+        <span><i class="sw lojista"></i>Lojista</span>
+        <span><i class="sw cliente"></i>Cliente</span>
+        <span><i class="sw voce"></i>Você</span>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/maps/azul.js"></script>
+  <script src="js/maps/laranja.js"></script>
+  <script src="js/maps/vermelho.js"></script>
+  <script src="js/sprites.js"></script>
+  <script src="js/fps.js"></script>
+  <script src="js/sim.js"></script>
+</body>
+</html>

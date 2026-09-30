@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Prévia dos sprites</title>
+  <style>
+    body { margin: 0; background: #efe6d2; font: 14px system-ui; padding: 16px; }
+    canvas { image-rendering: pixelated; display: block; }
+  </style>
+</head>
+<body>
+  <p>Prévia dos sprites (4 direções × 4 quadros). Ampliado 6×.</p>
+  <canvas id="c"></canvas>
+  <script src="../js/sprites.js"></script>
+  <script>
+    const Z = 6, looks = [];
+    for (let i = 0; i < 6; i++) looks.push(Sprites.shopper());
+    looks.push(Sprites.seller(), Sprites.seller(), Sprites.player());
+    const c = document.getElementById('c'), ctx = c.getContext('2d');
+    c.width = 16 * (Sprites.W + 2) * Z; c.height = looks.length * (Sprites.H + 4) * Z;
+    ctx.imageSmoothingEnabled = false;
+    looks.forEach((l, r) => {
+      let col = 0;
+      for (const d of [0, 1, 2, 3]) for (let f = 0; f < 4; f++) {
+        const x = col++ * (Sprites.W + 2) * Z, y = r * (Sprites.H + 4) * Z;
+        ctx.drawImage(Sprites.shadow, x + 1 * Z, y + 31 * Z, 14 * Z, 5 * Z);
+        ctx.drawImage(l.frames[d][f], x, y, Sprites.W * Z, Sprites.H * Z);
+      }
+    });
+  </script>
+</body>
+</html>

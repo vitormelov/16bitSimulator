@@ -1,0 +1,17 @@
+# Plantas originais (CAD/PDF) — ficam só localmente
+*.dxf
+*.dwg
+*.dwl
+*.dwl2
+*.bak
+*.pdf
+
+# Prévias geradas pelo tools/extract_dxf.py
+tools/map-preview-*.png
+
+# Configuração local do editor/Claude
+.claude/
+
+# Python
+__pycache__/
+*.pyc
